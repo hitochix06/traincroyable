@@ -1,0 +1,20 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 2s ease-out;
+}
+
+
+/* styles.css */
+.text-shadow {
+  text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+}
