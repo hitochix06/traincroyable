@@ -4,6 +4,7 @@ import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Cart() {
+  const [userAge, setUserAge] = useState(null); // Initialiser à null
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -19,12 +20,47 @@ export default function Cart() {
     }
   };
 
+  const calculateTotalAndSavings = () => {
+    let totalSavings = 0;
+    let total = 0;
+
+    cartItems.forEach((item) => {
+      let prixInitial = item.price;
+      let prixItem = prixInitial;
+      let reduction = 0;
+
+      // Réduction de 10% pour les articles de plus de 75€ pour tous les utilisateurs
+      if (prixItem > 75) {
+        reduction = prixItem * 0.1;
+        prixItem -= reduction;
+        totalSavings += reduction;
+      }
+
+      // Réduction supplémentaire de 10% pour les utilisateurs de moins de 25 ans,
+      // appliquée uniquement si l'utilisateur est connecté et que la première réduction n'a pas été appliquée
+      if (isLoggedIn && userAge < 25 && prixInitial <= 75) {
+        reduction = prixItem * 0.1;
+        prixItem -= reduction;
+        totalSavings += reduction;
+      }
+
+      total += prixItem;
+    });
+
+    return { total, totalSavings };
+  };
+  
   useEffect(() => {
     // Vérifiez si un token existe dans le localStorage
     const token = localStorage.getItem("token");
     // Si un token existe, considérez l'utilisateur comme connecté
     if (token) {
       setIsLoggedIn(true);
+      // Supposons que l'âge de l'utilisateur est stocké dans le localStorage sous la clé 'userAge'
+      const age = localStorage.getItem("age");
+      if (age) {
+        setUserAge(parseInt(age, 10)); // Convertir en nombre et définir l'âge
+      }
     }
     // Récupérer les IDs depuis le local storage
     const storedIds = JSON.parse(localStorage.getItem("cart")) || [];
@@ -54,7 +90,7 @@ export default function Cart() {
     };
 
     fetchCartItems();
-  }, []); // Fait la requête qu'une foishargement initial
+  }, []); // Fait la requête qu'une fois au chargement initial
 
   const addToReservations = async () => {
     try {
@@ -150,7 +186,7 @@ export default function Cart() {
                   <div className="md:col-span-2 bg-white shadow-lg rounded-lg p-8">
                     {/* Ajustez pour que cette div occupe 2/3 de l'espace disponible */}
                     <h2 className="text-3xl font-bold text-gray-800">
-                      Votre Panier
+                      Mon Panier
                     </h2>
                     {cartItems.map((item) => (
                       <div
@@ -159,14 +195,35 @@ export default function Cart() {
                       >
                         <div className="flex flex-col sm:flex-row sm:flex-grow sm:items-center space-x-0 sm:space-x-10 space-y-2 sm:space-y-0">
                           <h4 className="text-xl font-semibold flex-shrink-0">
-                            Départ: {item.departure} - Arrivée: {item.arrival}
+                            {item.departure} {">"} {item.arrival}
                           </h4>
                           <p className="text-lg flex-shrink-0">
                             {moment(item.date).format("HH:mm")}
                           </p>
-                          <p className="text-lg flex-shrink-0 font-bold text-black">
-                            Prix: {item.price}€
-                          </p>
+                          <div className="text-lg flex-shrink-0 ">
+                            <span className="font-bold text-black">Prix: </span>
+                            {isLoggedIn ? (
+                              userAge < 25 ? (
+                                <>
+                                  <span className="font-bold text-red-500">
+                                    {" -10% "}
+                                  </span>
+                                  <span>{(item.price * 0.9).toFixed(2)}€</span>
+                                </>
+                              ) : (
+                                <span>{item.price}€</span>
+                              )
+                            ) : item.price > 75 ? (
+                              <>
+                                <span className="font-bold text-red-500">
+                                  {" -10% "}
+                                </span>
+                                <span>{(item.price * 0.9).toFixed(2)}€</span>
+                              </>
+                            ) : (
+                              <span>{item.price}€</span>
+                            )}
+                          </div>
                         </div>
                         <button
                           onClick={() => handleRemoveFromCart(item._id)}
@@ -190,14 +247,17 @@ export default function Cart() {
                       </div>
                     ))}
                     <div className="flex justify-between items-center mt-8 p-4 bg-gray-100 rounded-lg">
-                      <h3 className="text-xl font-semibold">Total Prix:</h3>
+                      <h3 className="text-xl font-semibold">Total Prix : </h3>
                       <p className="text-xl">
-                        {" "}
-                        {cartItems.reduce(
-                          (total, item) => total + item.price,
-                          0
-                        )}
-                        €
+                        {calculateTotalAndSavings().total.toFixed(2)}€
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-4 p-4 bg-gray-100 rounded-lg">
+                      <h3 className="text-xl font-semibold">
+                        Économies réalisées :{" "}
+                      </h3>
+                      <p className="text-xl">
+                        {calculateTotalAndSavings().totalSavings.toFixed(2)}€
                       </p>
                     </div>
                     <div className="flex justify-end space-x-4 mt-8">

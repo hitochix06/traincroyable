@@ -181,7 +181,7 @@ export default function Home() {
           {" "}
           {/* Utilisez 3 colonnes au lieu de 2 pour un contrôle plus fin */}
           {/* Première carte avec formulaire, occupe 1 fraction */}
-          <div className="md:col-span-1 bg-white shadow-lg rounded-lg p-8">
+          <div className="md:col-span-1 bg-white p-8">
             {" "}
             {/* Ajustez pour que cette div occupe 1/3 de l'espace disponible */}
             <h3 className="text-xl font-semibold mb-6">Où allez-vous?</h3>
@@ -278,10 +278,10 @@ export default function Home() {
                 >
                   <div>
                     <h4 className="text-xl font-semibold">
-                      Départ: {result.departure} - Arrivée: {result.arrival}
+                      {result.departure} {">"} {result.arrival}
                     </h4>
                     <p className="text-lg">
-                      Heure de départ: {moment(result.date).format("HH:mm")}
+                      {moment(result.date).format("HH:mm")}
                     </p>
                     <p className="text-lg font-bold text-black">
                       Prix: {result.price}€

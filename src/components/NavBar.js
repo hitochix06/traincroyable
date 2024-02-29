@@ -12,7 +12,7 @@ const navigation = [
 const handleDeconnexion = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("lastName");
-  console.log("Utilisateur déconnecté");
+  localStorage.removeItem("age");
   alert("Vous êtes maintenant déconnecté.");
   window.location.reload();
 };
