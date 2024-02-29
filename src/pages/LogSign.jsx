@@ -185,7 +185,6 @@ const ConnexionForm = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("lastName", data.lastName);
         localStorage.setItem("age", data.age);
-        console.log("age", data.age);
 
         navigate("/");
         // Réinitialiser les champs du formulaire de connexion
