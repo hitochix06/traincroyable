@@ -202,7 +202,9 @@ export default function Cart() {
                                 {moment(item.date).format("HH:mm")}
                               </p>
                               <div className="text-lg flex-shrink-0 ">
-                                <span className="font-bold text-black">Prix: </span>
+                                <span className="font-bold text-black">
+                                  Prix:{" "}
+                                </span>
                                 {isLoggedIn ? (
                                   userAge < 25 ? (
                                     <>
@@ -210,7 +212,8 @@ export default function Cart() {
                                         {item.price}€{" "}
                                       </span>
                                       <span className="font-bold text-red-500 ml-2">
-                                        {" "}-10% {(item.price * 0.9).toFixed(2)}€
+                                        {" "}
+                                        -10% {(item.price * 0.9).toFixed(2)}€
                                       </span>
                                     </>
                                   ) : (
@@ -222,7 +225,8 @@ export default function Cart() {
                                       {item.price}€
                                     </span>
                                     <span className="font-bold text-red-500 ml-2">
-                                      {" "}-10% {(item.price * 0.9).toFixed(2)}€
+                                      {" "}
+                                      -10% {(item.price * 0.9).toFixed(2)}€
                                     </span>
                                   </>
                                 ) : (
@@ -255,7 +259,8 @@ export default function Cart() {
                     ) : (
                       <div className="text-center py-8">
                         <p className="text-xl font-semibold">
-                          Votre panier est vide. Veuillez sélectionner des trajets.
+                          Votre panier est vide. Veuillez sélectionner des
+                          trajets.
                         </p>
                       </div>
                     )}
@@ -264,7 +269,12 @@ export default function Cart() {
                       {isLoggedIn && (
                         <button
                           onClick={addToReservations}
-                          className="inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 uppercase"
+                          disabled={cartItems.length === 0} // Désactiver le bouton si cartItems est vide
+                          className={`inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white ${
+                            cartItems.length === 0
+                              ? "bg-gray-500 cursor-not-allowed"
+                              : "bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                          } uppercase`}
                         >
                           Payer
                         </button>
