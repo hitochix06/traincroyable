@@ -255,6 +255,23 @@ export default function Cart() {
                             </button>
                           </div>
                         ))}
+                        <div className="flex justify-between items-center mt-8 p-4 bg-gray-100 rounded-lg">
+                          <h3 className="text-xl font-semibold">
+                            Total Prix :{" "}
+                          </h3>
+                          <p className="text-xl">
+                            {calculateTotalAndSavings().total.toFixed(2)}€
+                          </p>
+                        </div>
+                        <div className="flex justify-between items-center mt-4 p-4 bg-gray-100 rounded-lg">
+                          <h3 className="text-xl font-semibold">
+                            Économies réalisées :{" "}
+                          </h3>
+                          <p className="text-xl">
+                            {calculateTotalAndSavings().totalSavings.toFixed(2)}
+                            €
+                          </p>
+                        </div>
                       </>
                     ) : (
                       <div className="text-center py-8">
