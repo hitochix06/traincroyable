@@ -187,86 +187,78 @@ export default function Cart() {
                     <h2 className="text-3xl font-bold text-gray-800">
                       Mon Panier
                     </h2>
-                    {cartItems.map((item) => (
-                      <div
-                        key={item._id}
-                        className="flex flex-col lg:flex-row justify-between items-center shadow-lg p-4"
-                      >
-                        <div className="flex flex-col sm:flex-row sm:flex-grow sm:items-center space-x-0 sm:space-x-10 space-y-2 sm:space-y-0">
-                          <h4 className="text-xl font-semibold flex-shrink-0">
-                            {item.departure} {">"} {item.arrival}
-                          </h4>
-                          <p className="text-lg flex-shrink-0">
-                            {moment(item.date).format("HH:mm")}
-                          </p>
-                          <div className="text-lg flex-shrink-0 ">
-                            <span className="font-bold text-black">Prix: </span>
-                            {isLoggedIn ? (
-                              userAge < 25 ? (
-                                <>
-                                  <span className="line-through">
-                                    {item.price}€{" "}
-                                  </span>
-                                  <span className="font-bold text-red-500 ml-2">
-                                    {" "}
-                                    {" -10% "}
-                                    {(item.price * 0.9).toFixed(2)}€
-                                  </span>
-                                </>
-                              ) : (
-                                <span>{item.price}€</span>
-                              )
-                            ) : item.price > 75 ? (
-                              <>
-                                <span className="line-through">
-                                  {item.price}€
-                                </span>
-                                <span className="font-bold text-red-500 ml-2">
-                                  {" "}
-                                  {" -10% "}
-                                  {(item.price * 0.9).toFixed(2)}€
-                                </span>
-                              </>
-                            ) : (
-                              <span>{item.price}€</span>
-                            )}
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => handleRemoveFromCart(item._id)}
-                          className="mt-5 sm:mt-4 sm:ml-4 inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-2"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
+                    {cartItems.length > 0 ? (
+                      <>
+                        {cartItems.map((item) => (
+                          <div
+                            key={item._id}
+                            className="flex flex-col lg:flex-row justify-between items-center shadow-lg p-4"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                            />
-                          </svg>
-                        </button>
+                            <div className="flex flex-col sm:flex-row sm:flex-grow sm:items-center space-x-0 sm:space-x-10 space-y-2 sm:space-y-0">
+                              <h4 className="text-xl font-semibold flex-shrink-0">
+                                {item.departure} {">"} {item.arrival}
+                              </h4>
+                              <p className="text-lg flex-shrink-0">
+                                {moment(item.date).format("HH:mm")}
+                              </p>
+                              <div className="text-lg flex-shrink-0 ">
+                                <span className="font-bold text-black">Prix: </span>
+                                {isLoggedIn ? (
+                                  userAge < 25 ? (
+                                    <>
+                                      <span className="line-through">
+                                        {item.price}€{" "}
+                                      </span>
+                                      <span className="font-bold text-red-500 ml-2">
+                                        {" "}-10% {(item.price * 0.9).toFixed(2)}€
+                                      </span>
+                                    </>
+                                  ) : (
+                                    <span>{item.price}€</span>
+                                  )
+                                ) : item.price > 75 ? (
+                                  <>
+                                    <span className="line-through">
+                                      {item.price}€
+                                    </span>
+                                    <span className="font-bold text-red-500 ml-2">
+                                      {" "}-10% {(item.price * 0.9).toFixed(2)}€
+                                    </span>
+                                  </>
+                                ) : (
+                                  <span>{item.price}€</span>
+                                )}
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleRemoveFromCart(item._id)}
+                              className="mt-5 sm:mt-4 sm:ml-4 inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 mr-2"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        ))}
+                      </>
+                    ) : (
+                      <div className="text-center py-8">
+                        <p className="text-xl font-semibold">
+                          Votre panier est vide. Veuillez sélectionner des trajets.
+                        </p>
                       </div>
-                    ))}
-                    <div className="flex justify-between items-center mt-8 p-4 bg-gray-100 rounded-lg">
-                      <h3 className="text-xl font-semibold">Total Prix : </h3>
-                      <p className="text-xl">
-                        {calculateTotalAndSavings().total.toFixed(2)}€
-                      </p>
-                    </div>
-                    <div className="flex justify-between items-center mt-4 p-4 bg-gray-100 rounded-lg">
-                      <h3 className="text-xl font-semibold">
-                        Économies réalisées :{" "}
-                      </h3>
-                      <p className="text-xl">
-                        {calculateTotalAndSavings().totalSavings.toFixed(2)}€
-                      </p>
-                    </div>
+                    )}
                     <div className="flex justify-end space-x-4 mt-8">
                       {/* Le bouton Payer n'apparaît que si `isLoggedIn` est `true` */}
                       {isLoggedIn && (
