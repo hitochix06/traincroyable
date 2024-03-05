@@ -283,7 +283,12 @@ export default function Cart() {
                       {!isLoggedIn && (
                         <button
                           onClick={handlePaymentClick}
-                          className="inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 uppercase"
+                          disabled={cartItems.length === 0} // Désactiver le bouton si cartItems est vide
+                          className={`inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md ${
+                            cartItems.length === 0
+                              ? "bg-gray-500 cursor-not-allowed"
+                              : "bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          } text-white uppercase`}
                         >
                           Se connecter pour payer
                         </button>
