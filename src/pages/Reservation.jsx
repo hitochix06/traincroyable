@@ -46,46 +46,56 @@ export default function Reservation() {
                   <h2 className="text-3xl font-bold text-gray-800">
                     Réservation
                   </h2>
-                  {userReservations.map((reservation) => (
-                    <div
-                      key={reservation.token}
-                      className="flex flex-col lg:flex-row  justify-between items-center shadow-lg p-5 mb-4"
-                    >
-                      <div className="flex flex-col sm:flex-row sm:flex-grow sm:items-center space-x-0 sm:space-x-20 space-y-2 sm:space-y-0">
-                        <h4 className="text-xl font-semibold flex-shrink-0">
-                          {reservation.departure} {">"} {reservation.arrival}
-                        </h4>
-                        <p className="text-lg flex-shrink-0">
-                          {moment(reservation.date).format("HH:mm")}
-                        </p>
-                        <p className="text-lg flex-shrink-0">
-                          Prix: {reservation.price} €
-                        </p>
-                        {/* Ajout du temps restant avant le départ */}
-                        <p className="text-lg flex-shrink-0">
-                          Départ dans:{" "}
-                          {(() => {
-                            const now = moment();
-                            const departure = moment(reservation.date);
-                            if (departure.isAfter(now)) {
-                              const duration = moment.duration(
-                                departure.diff(now)
-                              );
-                              const hours = duration.hours();
-                              return `${hours} heures`;
-                            } else {
-                              return "Départ passé";
-                            }
-                          })()}
+                  {userReservations.length > 0 ? (
+                    <>
+                      {userReservations.map((reservation) => (
+                        <div
+                          key={reservation.token}
+                          className="flex flex-col lg:flex-row  justify-between items-center shadow-lg p-5 mb-4"
+                        >
+                          <div className="flex flex-col sm:flex-row sm:flex-grow sm:items-center space-x-0 sm:space-x-20 space-y-2 sm:space-y-0">
+                            <h4 className="text-xl font-semibold flex-shrink-0">
+                              {reservation.departure} {">"} {reservation.arrival}
+                            </h4>
+                            <p className="text-lg flex-shrink-0">
+                              {moment(reservation.date).format("HH:mm")}
+                            </p>
+                            <p className="text-lg flex-shrink-0">
+                              Prix: {reservation.price} €
+                            </p>
+                            {/* Ajout du temps restant avant le départ */}
+                            <p className="text-lg flex-shrink-0">
+                              Départ dans:{" "}
+                              {(() => {
+                                const now = moment();
+                                const departure = moment(reservation.date);
+                                if (departure.isAfter(now)) {
+                                  const duration = moment.duration(
+                                    departure.diff(now)
+                                  );
+                                  const hours = duration.hours();
+                                  return `${hours} heures`;
+                                } else {
+                                  return "Départ passé";
+                                }
+                              })()}
+                            </p>
+                          </div>
+                        </div>
+                        
+                      ))}
+                      <div className="flex justify-center items-center mt-8 p-4 bg-gray-100">
+                        <p className="text-xl text-center">
+                          Profitez pleinement de votre voyage.
                         </p>
                       </div>
-                    </div>
-                  ))}
-                  <div className="flex justify-center items-center mt-8 p-4 bg-gray-100">
-                    <p className="text-xl text-center">
-                      Profitez pleinement de votre voyage.
+                    </>
+                  ) : (
+                    <p className="text-xl text-gray-800">
+                      Il n'y a pas de réservations.
                     </p>
-                  </div>
+                    
+                  )}
                 </div>
               </div>
             </div>
