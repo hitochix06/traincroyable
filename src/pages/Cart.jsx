@@ -49,7 +49,7 @@ export default function Cart() {
 
     // Stocker le total dans le localStorage
     localStorage.setItem("totalPrix", total.toFixed(2));
-    console.log("Total Prix:", total.toFixed(2));
+    // console.log("Total Prix:", total.toFixed(2));
 
     return { total, totalSavings };
   };
