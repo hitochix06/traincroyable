@@ -58,6 +58,7 @@ export default function Cart() {
       setIsLoggedIn(true);
       // Supposons que l'âge de l'utilisateur est stocké dans le localStorage sous la clé 'userAge'
       const age = localStorage.getItem("age");
+
       if (age) {
         setUserAge(parseInt(age, 10)); // Convertir en nombre et définir l'âge
       }
@@ -206,7 +207,7 @@ export default function Cart() {
                                   Prix:{" "}
                                 </span>
                                 {isLoggedIn ? (
-                                  userAge < 25 ? (
+                                  userAge < 25 || item.price > 75 ? (
                                     <>
                                       <span className="line-through">
                                         {item.price}€{" "}
