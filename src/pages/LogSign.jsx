@@ -56,105 +56,109 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="w-full ">
-      <div className="mx-auto max-w-lg text-center">
-        <h1 className="text-2xl font-bold sm:text-3xl">Inscription</h1>
-      </div>
-      <div className="mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
-        <form
-          action="#"
-          className="mx-auto mb-0 max-w-md space-y-4 p-6"
-          onSubmit={handleSignUp}
-        >
-          {/* Nom, Prénom, et Âge en ligne */}
-          <div className="flex flex-wrap -mx-3 mb-6">
-            {/* nom */}
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-              <label htmlFor="lastname" className="sr-only">
-                Nom
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Nom"
-                onChange={handleInputSignUpChange}
-              />
-            </div>
-            {/* prénom */}
-            <div className="w-full md:w-1/3 px-3">
-              <label htmlFor="firstname" className="sr-only">
-                Prénom
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Prénom"
-                onChange={handleInputSignUpChange}
-              />
-            </div>
-            {/* Âge */}
-            <div className="w-full md:w-1/4 px-3">
-              <label htmlFor="age" className="sr-only">
-                Âge
-              </label>
-              <input
-                type="number"
-                name="age"
-                className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Âge"
-                onChange={handleInputSignUpChange}
-              />
-            </div>
+    <main className="isolate">
+      <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
+        <div className="w-full ">
+          <div className="mx-auto max-w-lg text-center">
+            <h1 className="text-2xl font-bold sm:text-3xl">Inscription</h1>
           </div>
-          {/* EMAIL */}
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <div className="relative">
-              <input
-                type="email"
-                name="email"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Email"
-                onChange={handleInputSignUpChange}
-              />
-            </div>
-          </div>
-          {/* PASSWORD */}
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type="password"
-                name="password"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Mots passe"
-                onChange={handleInputSignUpChange}
-              />
-            </div>
-          </div>
-          {/* SUBMIT */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white uppercase hover:bg-blue-700 transition duration-300"
+          <div className="mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
+            <form
+              action="#"
+              className="mx-auto mb-0 max-w-md space-y-4 p-6"
+              onSubmit={handleSignUp}
             >
-              s'inscrire
-            </button>
+              {/* Nom, Prénom, et Âge en ligne */}
+              <div className="flex flex-wrap -mx-3 mb-6">
+                {/* nom */}
+                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <label htmlFor="lastname" className="sr-only">
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Nom"
+                    onChange={handleInputSignUpChange}
+                  />
+                </div>
+                {/* prénom */}
+                <div className="w-full md:w-1/3 px-3">
+                  <label htmlFor="firstname" className="sr-only">
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Prénom"
+                    onChange={handleInputSignUpChange}
+                  />
+                </div>
+                {/* Âge */}
+                <div className="w-full md:w-1/4 px-3">
+                  <label htmlFor="age" className="sr-only">
+                    Âge
+                  </label>
+                  <input
+                    type="number"
+                    name="age"
+                    className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Âge"
+                    onChange={handleInputSignUpChange}
+                  />
+                </div>
+              </div>
+              {/* EMAIL */}
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Email"
+                    onChange={handleInputSignUpChange}
+                  />
+                </div>
+              </div>
+              {/* PASSWORD */}
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type="password"
+                    name="password"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Mots passe"
+                    onChange={handleInputSignUpChange}
+                  />
+                </div>
+              </div>
+              {/* SUBMIT */}
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white uppercase hover:bg-blue-700 transition duration-300"
+                >
+                  s'inscrire
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
@@ -220,61 +224,66 @@ const ConnexionForm = () => {
     });
   };
 
+  //page de Connexion
   return (
-    <div className="w-full ">
-      <div className="mx-auto max-w-lg text-center">
-        <h1 className="text-2xl font-bold sm:text-3xl">Connexion</h1>
-      </div>
-      <div className="mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
-        <form
-          action="#"
-          className="mx-auto mb-0 max-w-md space-y-4 p-6"
-          onSubmit={handleConnexion}
-        >
-          {/* EMAIL */}
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <div className="relative">
-              <input
-                type="email"
-                name="email"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="Email"
-                onChange={handleInputConnexionChange}
-              />
-            </div>
+    <main className="isolate">
+      <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
+        <div className="w-full ">
+          <div className="mx-auto max-w-lg text-center">
+            <h1 className="text-2xl font-bold sm:text-3xl">Connexion</h1>
           </div>
-          {/* PASSWORD */}
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type="password"
-                name="password"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                required // Ajout de l'attribut required
-                placeholder="mots passe"
-                onChange={handleInputConnexionChange}
-              />
-            </div>
-          </div>
-          {/* SUBMIT */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white uppercase hover:bg-blue-700 transition duration-300"
+          <div className="mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
+            <form
+              action="#"
+              className="mx-auto mb-0 max-w-md space-y-4 p-6"
+              onSubmit={handleConnexion}
             >
-              Connexion
-            </button>
+              {/* EMAIL */}
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="Email"
+                    onChange={handleInputConnexionChange}
+                  />
+                </div>
+              </div>
+              {/* PASSWORD */}
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type="password"
+                    name="password"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    required // Ajout de l'attribut required
+                    placeholder="mots passe"
+                    onChange={handleInputConnexionChange}
+                  />
+                </div>
+              </div>
+              {/* SUBMIT */}
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white uppercase hover:bg-blue-700 transition duration-300"
+                >
+                  Connexion
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
