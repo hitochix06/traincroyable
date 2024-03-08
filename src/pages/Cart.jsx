@@ -73,7 +73,7 @@ export default function Cart() {
     // Envoyer une requête au backend pour récupérer les détails des trajets
     const fetchCartItems = async () => {
       try {
-        const response = await fetch("http://localhost:3000/get-cart-items", {
+        const response = await fetch("https://backupetraincroyable.vercel.app/get-cart-items", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -106,7 +106,7 @@ export default function Cart() {
       const idsTrajetsPanier = JSON.parse(localStorage.getItem("cart")) || [];
 
       // Effectuer une requête au serveur pour ajouter les trajets sélectionnés aux réservations de l'utilisateur
-      const reponse = await fetch("http://localhost:3000/add-to-reservations", {
+      const reponse = await fetch("https://backupetraincroyable.vercel.app/add-to-reservations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

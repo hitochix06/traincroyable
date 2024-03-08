@@ -67,7 +67,7 @@ export default function Home() {
       .format("YYYY-MM-DDTHH:mm:ss.SSSZ");
 
     // Fetch vers le back pour rechercher les trajets avec les valeurs saisies
-    const response = await fetch("https://backupe-traincroyable.vercel.app/search", {
+    const response = await fetch("https://backupetraincroyable.vercel.app/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default function Home() {
   //Function add to cart
   const handleChoose = async (tripId) => {
     try {
-      const response = await fetch("https://backupe-traincroyable.vercel.app/add-to-cart", {
+      const response = await fetch("https://backupetraincroyable.vercel.app/add-to-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -289,11 +289,10 @@ export default function Home() {
                   </div>
                   <button
                     onClick={() => handleChoose(result._id)}
-                    className={`inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md ${
-                      selectedTrips.includes(result._id)
-                        ? "bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
-                        : "bg-blue-600 hover:bg-blue-700 text-white"
-                    } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                    className={`inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md ${selectedTrips.includes(result._id)
+                      ? "bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                      } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
                     disabled={selectedTrips.includes(result._id)}
                   >
                     Choisir
