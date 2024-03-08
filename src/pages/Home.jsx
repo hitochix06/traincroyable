@@ -67,7 +67,7 @@ export default function Home() {
       .format("YYYY-MM-DDTHH:mm:ss.SSSZ");
 
     // Fetch vers le back pour rechercher les trajets avec les valeurs saisies
-    const response = await fetch("http://localhost:3000/search", {
+    const response = await fetch("https://backupe-traincroyable.vercel.app/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default function Home() {
   //Function add to cart
   const handleChoose = async (tripId) => {
     try {
-      const response = await fetch("http://localhost:3000/add-to-cart", {
+      const response = await fetch("https://backupe-traincroyable.vercel.app/add-to-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

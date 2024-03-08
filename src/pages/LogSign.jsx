@@ -18,7 +18,7 @@ const SignUpForm = () => {
 
     try {
       // Envoyer la requête à votre backend
-      const response = await fetch("http://localhost:3000/users/signup", {
+      const response = await fetch("https://backupe-traincroyable.vercel.app/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -175,7 +175,7 @@ const ConnexionForm = () => {
 
     try {
       // Envoyer la requête à votre backend pour la connexion
-      const response = await fetch("http://localhost:3000/users/login", {
+      const response = await fetch("https://backupe-traincroyable.vercel.app/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ export default function Reservation() {
       try {
         // Effectuez une requête à la route user-reservations pour obtenir les réservations de l'utilisateur
         const response = await fetch(
-          "http://localhost:3000/user-reservations",
+          "https://backupe-traincroyable.vercel.app/user-reservations",
           {
             method: "GET",
             headers: {
@@ -82,7 +82,7 @@ export default function Reservation() {
                             </p>
                           </div>
                         </div>
-                        
+
                       ))}
                       <div className="flex justify-center items-center mt-8 p-4 bg-gray-100">
                         <p className="text-xl text-center">
@@ -94,7 +94,7 @@ export default function Reservation() {
                     <p className="text-xl text-gray-800">
                       Il n'y a pas de réservations.
                     </p>
-                    
+
                   )}
                 </div>
               </div>
